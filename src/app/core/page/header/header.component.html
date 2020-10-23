@@ -1,0 +1,26 @@
+<div class="container">
+  <img src="assets/images/icons/itaubba.svg" alt="Itaú BBA" />
+  <div class="profile--wrapper">
+    <div class="help--wrapper">
+      <mat-icon [matTooltip]="toolTip"
+      >help_outline</mat-icon>
+      <p>ajuda</p>
+    </div>
+    <hr />
+    <div class="profile--info">
+      <div class="abbreviation--wrapper">
+        <p>{{ userInfo?.userName | nameAbreviation }}</p>
+      </div>
+      <div class="profile--info-container">
+        <p class="profile--name">{{ userInfo?.userName }}</p>
+        <p class="profile--company-name">{{ userInfo?.companyName }}</p>
+      </div>
+      <button class="logout--button" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout.emit()">Sair</button>
+      </mat-menu>
+    </div>
+  </div>
+</div>

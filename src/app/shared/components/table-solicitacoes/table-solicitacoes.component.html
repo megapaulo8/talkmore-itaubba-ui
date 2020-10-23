@@ -1,0 +1,41 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th class="text--align-left">Empresa</th>
+      <th>Plano</th>
+      <th>Tarifa</th>
+      <th>Minutos</th>
+      <th>Valor Plano</th>
+      <th>Data de Adesão</th>
+      <th>Data de Envio</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let request of requests">
+      <td class="font--weight-bold">{{ request?._id }}</td>
+      <td>
+        <div class="company--name">
+          <p class="font--weight-bold">{{ request?.companyName }}</p>
+          <p>CNPJ: {{ request?.cnpj }}</p>
+        </div>
+      </td>
+      <td class="font--weight-bold">{{ request?.plan }}</td>
+      <td class="font--color-grey">{{ request?.tax | brazilianCurrency }}</td>
+      <td class="font--color-grey">{{ request?.timeMinutes }}</td>
+      <td class="font--color-grey">{{ request?.planValue | brazilianCurrency }}</td>
+      <td class="font--color-grey">{{ request?.accessionDate | date: 'dd/MM/yyyy' }}</td>
+      <td class="font--color-grey">{{ request?.sendData | date: 'dd/MM/yyyy' }}</td>
+      <td>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+      </td>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="editRequest.emit(request?._id)">Editar</button>
+        <button mat-menu-item (click)="deleteRequest.emit(request?._id)">Excluir</button>
+      </mat-menu>
+    </tr>
+  </tbody>
+</table>

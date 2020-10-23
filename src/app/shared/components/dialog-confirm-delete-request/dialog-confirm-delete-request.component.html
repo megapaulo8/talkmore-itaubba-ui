@@ -1,0 +1,7 @@
+<div class="container">
+  <p class="title--solicitacao">Tem certeza que deseja excluir essa solicitação?</p>
+  <div class="options--wrapper">
+    <button mat-dialog-close class="not--delete" mat-flat-button>Não</button>
+    <button [mat-dialog-close]="requestId" class="delete" mat-flat-button>Sim</button>
+  </div>
+</div>

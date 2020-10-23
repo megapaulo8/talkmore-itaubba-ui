@@ -1,0 +1,18 @@
+<div class="container">
+  <mat-card>
+    <img class="logo--itau" src="assets/images/icons/itaubba.svg" alt="Itaú BBA" />
+    <mat-form-field appearance="fill">
+      <mat-label>Digite seu email cadastrado</mat-label>
+      <input matInput placeholder="example@example.com" [formControl]="email" [(ngModel)]="login.email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Digite sua senha</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Esconder senha'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <button (click)="loginUser.emit(login)" mat-raised-button>Realizar Login</button>
+  </mat-card>
+</div>

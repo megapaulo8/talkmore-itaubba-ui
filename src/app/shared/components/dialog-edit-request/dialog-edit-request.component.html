@@ -1,0 +1,52 @@
+<p class="title--solicitacao">Editar solicitação</p>
+<p class="subtitle--solicitacao">Aqui você pode editar a sua solicitação</p>
+<div class="container">
+  <form [formGroup]="newRequestFormGroup" (ngSubmit)="onSubmit()" #formGroupDirective>
+    <div>
+      <div class="grid--three-columns">
+        <mat-form-field appearance="fill">
+          <mat-label>Empresa</mat-label>
+          <input matInput type="text" name="companyName" formControlName="companyName">
+          <mat-error *ngIf="checkError('companyName', 'required')">Nome da empresa é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>CNPJ</mat-label>
+          <input matInput [textMask]="{mask: cnpjMask}" type="text" name="cnpj" formControlName="cnpj">
+          <mat-error *ngIf="checkError('cnpj', 'required')">CNPJ da empresa é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Plano</mat-label>
+          <mat-select name="plan" formControlName="plan">
+            <mat-option *ngFor="let planType of planTypes" [value]="planType">{{ planType }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="checkError('plan', 'required')">Escolha o plano que deseja adquirir</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="grid--four-columns">
+        <mat-form-field appearance="fill">
+          <mat-label>Tarifa</mat-label>
+          <input matInput currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" type="text" name="tax" formControlName="tax">
+          <mat-error *ngIf="checkError('tax', 'required')">Digite o valor da tarifa</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Minutos</mat-label>
+          <input matInput type="text" name="timeMinutes" formControlName="timeMinutes">
+          <mat-error *ngIf="checkError('timeMinutes', 'required')">Digite a quantidade de minutos a ser contratado</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Valor do Plano</mat-label>
+          <input matInput currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" type="text" name="planValue" formControlName="planValue">
+          <mat-error *ngIf="checkError('planValue', 'required')">Digite o valor do plano a ser contratado</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Data Adesão</mat-label>
+          <input matInput [matDatepicker]="picker" name="accessionDate" formControlName="accessionDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="checkError('accessionDate', 'required')">Digite a data de adesão do plano</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <button [disabled]="!newRequestFormGroup.valid" mat-flat-button>Salvar Solicitação</button>
+  </form>
+</div>

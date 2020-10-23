@@ -1,0 +1,8 @@
+<div class="container">
+  <p class="title--solicitacao">Nova solicitação</p>
+  <p class="subtitle--solicitacao">Insira aqui os dados cadastrais para uma nova solicitação</p>
+  <app-form-nova-solicitacao (newRequestClick)="sendNewRequest($event)"></app-form-nova-solicitacao>
+  <p class="title--solicitacao">Minhas solicitações</p>
+  <p class="subtitle--solicitacao">Aqui você pode acompanhar o andamento de suas solicitações</p>
+  <app-table-solicitacoes [requests]="requests" (editRequest)="editRequest($event)" (deleteRequest)="deleteRequest($event)"></app-table-solicitacoes>
+</div>
