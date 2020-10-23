@@ -12,6 +12,9 @@
   grid-template-columns: 3fr 1fr
   position: relative
 
+  @media scren and (max-width: 1440px)
+    grid-template-columns: auto
+
   .grid--three-columns
     display: grid
     grid-template-columns: 2fr 1fr 1fr
@@ -32,6 +35,9 @@
     padding: 5px 0 !important
     bottom: 0
     right: 0
+
+    @media screen and (max-width: 1440px)
+      position: relative
 
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex
   background: transparent !important
