@@ -3,9 +3,13 @@ export const environment = {
 };
 
 export function API(): string {
-  return localStorage.getItem("server") || "";
+  return "https://agdo-server.appspot.com/";
 }
 
 export const realTimeUpdateDelay: number = 3000;
 
+export const TokenName: string = "itaubba_authorizationData";
+
 export const cacheExpiresDelay: number = 160000;
+
+export const applicationId: string = 'pauloMarcosMancioDosSantos';
