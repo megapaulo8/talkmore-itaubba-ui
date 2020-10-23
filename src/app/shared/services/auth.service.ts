@@ -2,8 +2,8 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 import { Http } from './http.service';
-import { UserLogin } from '../models/user/authentication/user-login';
 import { TokenName } from '../../../environments/environment';
+import { UserLogin } from '../models/user/authentication/user-login';
 import { AuthenticationReturn } from '../models/user/authentication/authentication-return';
 
 @Injectable({
